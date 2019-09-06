@@ -5,7 +5,7 @@ import '../models/product.dart';
 class FavoritesProvider with ChangeNotifier {
   List<Product> _favorites = [];
 
-  List<Product> get favorites {
+  List<Product> get products {
     return [..._favorites];
   }
 
