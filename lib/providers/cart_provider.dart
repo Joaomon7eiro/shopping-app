@@ -50,4 +50,9 @@ class CartProvider with ChangeNotifier {
     _products.remove(key);
     notifyListeners();
   }
+
+  void clear() {
+    _products = {};
+    notifyListeners();
+  }
 }

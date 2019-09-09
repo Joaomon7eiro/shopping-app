@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/widgets/cart_item.dart';
 
 import '../providers/cart_provider.dart';
+import '../providers/order_provider.dart';
 
 class CartPage extends StatelessWidget {
   static const routeName = '/cart';
@@ -40,7 +41,12 @@ class CartPage extends StatelessWidget {
                       'FINALIZAR PEDIDO',
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<OrderProvider>(context, listen: false)
+                          .addOrder(cartProvider.products.values.toList(),
+                              cartProvider.totalAmount);
+                      cartProvider.clear();
+                    },
                   )
                 ],
               ),

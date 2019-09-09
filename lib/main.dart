@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import './providers/favorites_provider.dart';
 import './providers/products_provider.dart';
 import './providers/cart_provider.dart';
+import './providers/order_provider.dart';
 import './pages/products_page.dart';
 import './pages/product_detail_page.dart';
 import './pages/cart_page.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           builder: (context) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          builder: (context) => OrderProvider(),
         ),
       ],
       child: MaterialApp(
