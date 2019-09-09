@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/widgets/cart_item.dart';
 
 import '../providers/cart_provider.dart';
 
@@ -43,6 +44,17 @@ class CartPage extends StatelessWidget {
                   )
                 ],
               ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (ctx, index) {
+                return CartItem(cartProvider.products.values.toList()[index]);
+              },
+              itemCount: cartProvider.products.length,
             ),
           )
         ],

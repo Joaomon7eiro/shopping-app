@@ -1,18 +1,11 @@
 import 'package:flutter/foundation.dart';
 
-class CardItem {
-  final String id;
-  final String title;
-  final int quantity;
-  final double price;
-
-  const CardItem({this.id, this.title, this.quantity, this.price});
-}
+import '../models/cart_product.dart';
 
 class CartProvider with ChangeNotifier {
-  Map<String, CardItem> _products = {};
+  Map<String, CartProduct> _products = {};
 
-  Map<String, CardItem> get products {
+  Map<String, CartProduct> get products {
     return {..._products};
   }
 
@@ -32,22 +25,29 @@ class CartProvider with ChangeNotifier {
     if (_products.containsKey(id)) {
       _products.update(
         id,
-        (CardItem item) => CardItem(
+        (CartProduct item) => CartProduct(
             price: item.price,
             title: item.title,
+            productId: id,
             quantity: item.quantity + 1,
             id: item.id),
       );
     } else {
       _products.putIfAbsent(
         id,
-        () => CardItem(
+        () => CartProduct(
             quantity: 1,
             id: DateTime.now().toString(),
             price: price,
+            productId: id,
             title: title),
       );
     }
+    notifyListeners();
+  }
+
+  void removeItem(String key) {
+    _products.remove(key);
     notifyListeners();
   }
 }
