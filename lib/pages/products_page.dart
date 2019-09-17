@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/pages/cart_page.dart';
 
 import '../widgets/badge.dart';
+import '../widgets/app_drawer.dart';
 import '../widgets/products_grid.dart';
 import '../providers/cart_provider.dart';
 
@@ -19,6 +20,7 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: AppDrawer(),
       appBar: AppBar(
         title: Text('ShopName'),
         actions: <Widget>[
